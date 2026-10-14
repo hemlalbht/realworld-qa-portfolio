@@ -86,7 +86,5 @@
 
 ## 3. Suspicious things (possible bugs)
 
-## 3. Suspicious things (possible bugs)
-
 - Opening any non-existent article URL (e.g. `/article/this-does-not-exist-999`, or the old slug `/article/qa-test-article-01-1` after a title edit) shows a blank page with only the header. No "Article not found" message is shown. Severity: Low.
 - Editing an article and clearing the title saves it without any error. The app redirects to `/article/` (blank page). The article then appears in the profile list and Global Feed without a title, and clicking it opens a blank page, so its Edit and Delete buttons cannot be reached from the UI. Create article rejects an empty title, Edit does not. Severity: High.
