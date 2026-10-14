@@ -79,7 +79,7 @@
 
 ## 2. Questions (unclear behaviour)
 
-- Login disables the Sign in button for empty fields, but New Article and Comment keep their buttons enabled and show an error only after clicking. Is this difference in validation behaviour intended?
+- Login disables the Sign in button for empty fields, but New Article and Comment keep their buttons enabled and show an error after clicking. Is this difference intended?
 - After editing a title, the old URL stops working. Should the app redirect, or at least show a "not found" message?
 - Delete Article and Delete Comment both remove the item immediately without a confirmation dialog. Is this intended? An accidental click cannot be undone.
 - Is it intended that an article can be favorited by its own author?
@@ -88,11 +88,13 @@
 
 - Opening any non-existent article URL (e.g. `/article/this-does-not-exist-999`, or the old slug `/article/qa-test-article-01-1` after a title edit) shows a blank page with only the header. No "Article not found" message is shown. Severity: Low.
 - Editing an article and clearing the title saves it without any error. The app redirects to `/article/` (blank page). The article then appears in the profile list and Global Feed without a title, and clicking it opens a blank page, so its Edit and Delete buttons cannot be reached from the UI. Create article rejects an empty title, Edit does not. Severity: High.
-- Note: both findings were observed on 2026-10-13. They have not yet been re-checked after the demo data reset on 2026-10-14.
+- Note: both findings were observed on 2026-10-13. They have not yet been re-checked on a later date.
 
 ## 4. Environment notes
 
 - The demo site shows a banner: "This demo is connected to a demo backend that enforces session isolation."
-- Articles, comments and favorites created on 2026-10-13 were gone when logging in again on 2026-10-14. Only the 4 seed articles remained, and the favorite counts were back to their seed values. The account (username, email, password) was kept.
-- The cause is not confirmed: it could be the logout, or a daily reset of the demo data.
-- Consequence: manual and automated tests must create their own data and cannot rely on data from a previous session or day.
+- On 2026-10-14 at about 12:00, after logging in again, the Global Feed showed only the 4 seed articles and the favorite counts were at their seed values. The articles created on 2026-10-13 were not visible.
+- On 2026-10-14 at about 15:26, the same account showed the 2026-10-13 articles and the favorite again, together with a new article created that day.
+- Logging out and logging in again (checked on 2026-10-15) does not remove the data: the article "Persistence Check" was still present.
+- The cause of the temporary disappearance on 2026-10-14 is not confirmed. The demo data may be temporarily inconsistent.
+- Consequence: results on this demo may not be repeatable. Tests should create their own data, and a local backend gives a more reliable environment.

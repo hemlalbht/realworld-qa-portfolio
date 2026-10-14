@@ -291,7 +291,7 @@
 
 ## Open questions (to clarify with the product owner)
 
-1. Should the Sign in button be disabled for empty fields, while New Article and Comment buttons stay enabled and show an error after clicking? (Inconsistent validation behaviour.)
+1. 1. Should empty-field validation be consistent? Sign in is disabled for empty fields, but New Article and Comment stay enabled and show an error after clicking.
 2. Should Delete Article and Delete Comment ask for confirmation?
 3. Is it intended that an author can favorite their own article?
 4. After an article title is edited, should the old URL redirect to the new one or show a "not found" message?
