@@ -1,7 +1,7 @@
 # Exploration Notes: RealWorld (Conduit)
 
 - **App URL:** https://demo.realworld.show/
-- **Date:** 2026-10-12
+- **Date:** 2026-10-12 to 2026-10-14
 - **Tester:** Hemlal
 - **Browser:** Microsoft Edge Version 155.0.4283.45 (Official build) (64-bit)
 
@@ -88,3 +88,11 @@
 
 - Opening any non-existent article URL (e.g. `/article/this-does-not-exist-999`, or the old slug `/article/qa-test-article-01-1` after a title edit) shows a blank page with only the header. No "Article not found" message is shown. Severity: Low.
 - Editing an article and clearing the title saves it without any error. The app redirects to `/article/` (blank page). The article then appears in the profile list and Global Feed without a title, and clicking it opens a blank page, so its Edit and Delete buttons cannot be reached from the UI. Create article rejects an empty title, Edit does not. Severity: High.
+- Note: both findings were observed on 2026-10-13. They have not yet been re-checked after the demo data reset on 2026-10-14.
+
+## 4. Environment notes
+
+- The demo site shows a banner: "This demo is connected to a demo backend that enforces session isolation."
+- Articles, comments and favorites created on 2026-10-13 were gone when logging in again on 2026-10-14. Only the 4 seed articles remained, and the favorite counts were back to their seed values. The account (username, email, password) was kept.
+- The cause is not confirmed: it could be the logout, or a daily reset of the demo data.
+- Consequence: manual and automated tests must create their own data and cannot rely on data from a previous session or day.
